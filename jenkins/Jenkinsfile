@@ -1,14 +1,9 @@
-pipeline {
-  agent {
-    docker {
-      image 'maven:3.8.6-openjdk-11'
+#!groovy
+
+node {
+    docker.image('maven:3.8.6-openjdk-11') {
+        stage('Run Gatling Test') {
+            sh 'mvn gatling:test'
+        }
     }
-  }
-  stages {
-    stage('Run Gatling Test') {
-      steps {
-        sh 'mvn gatling:test'
-      }
-    }
-  }
 }
