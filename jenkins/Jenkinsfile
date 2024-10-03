@@ -1,0 +1,11 @@
+node {
+    docker.image('denvazh/gatling:latest') {
+        stage('version') {
+            sh 'echo version'
+        }
+
+        stage('Running') {
+            sh 'mvn gatling:test'
+        }
+    }
+}
