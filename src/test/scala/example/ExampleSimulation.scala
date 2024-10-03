@@ -5,7 +5,7 @@ import io.gatling.core.structure.{ChainBuilder, ScenarioBuilder}
 import io.gatling.http.Predef._
 import io.gatling.http.protocol.HttpProtocolBuilder
 
-import java.util.concurrent.ThreadLocalRandom
+import scala.concurrent.duration.DurationInt
 
 class ExampleSimulation extends Simulation {
 
@@ -21,6 +21,6 @@ class ExampleSimulation extends Simulation {
   val bitcoin: ScenarioBuilder = scenario("Bitcoin price check").exec(checkPrice)
 
   setUp(
-    bitcoin.inject(rampUsers(10).during(10))
+    bitcoin.inject(rampUsers(10).during(2.minutes))
   ).protocols(httpProtocol)
 }
