@@ -1,3 +1,5 @@
+#!groovy
+
 node {
     docker.image('denvazh/gatling:latest') {
         stage('version') {
