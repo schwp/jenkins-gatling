@@ -1,13 +1,14 @@
-#!groovy
-
-node {
-    docker.image('sbtscala/scala-sbt') {
-        stage('version') {
-            sh 'echo Test Gatling'
-        }
-
-        stage('Running') {
-            sh 'mvn gatling:test'
-        }
+pipeline {
+  agent {
+    docker {
+      image 'denvazh/gatling:latest'
     }
+  }
+  stages {
+    stage('Run Gatling Test') {
+      steps {
+        sh 'mvn gatling:test'
+      }
+    }
+  }
 }
