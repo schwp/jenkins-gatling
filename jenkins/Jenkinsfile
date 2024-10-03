@@ -3,7 +3,7 @@
 node {
     docker.image('denvazh/gatling:latest') {
         stage('version') {
-            sh 'echo version'
+            sh 'echo Test Gatling'
         }
 
         stage('Running') {
