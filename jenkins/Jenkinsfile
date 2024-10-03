@@ -1,7 +1,7 @@
 #!groovy
 
 node {
-    docker.image('denvazh/gatling:latest') {
+    docker.image('sbtscala/scala-sbt') {
         stage('version') {
             sh 'echo Test Gatling'
         }
