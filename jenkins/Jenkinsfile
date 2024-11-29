@@ -16,9 +16,8 @@ pipeline {
                 def gatlingFolder = sh(script: "cat target/gatling/lastRun.txt", returnStdout: true).trim()
                 echo "Gatling folder found: ${gatlingFolder}"
 
-                sh "cd target/gatling && zip -r ${gatlingFolder}.zip ${gatlingFolder}"
-
-                archiveArtifacts artifacts: "target/gatling/${gatlingFolder}/**", onlyIfSuccessful: true
+                zip zipFile: "report.zip", archive: true, dir: "target/gatling/${gatlingFolder}"
+                //archiveArtifacts artifacts: "target/gatling/${gatlingFolder}/**", onlyIfSuccessful: true
             }
         }
     }
