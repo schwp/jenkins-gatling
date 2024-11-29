@@ -12,8 +12,10 @@ pipeline {
     }
     stage('Saving folder') {
         steps {
-            def gatlingFolder = sh(script: "ls target/gatling", returnStdout: true).trim()
-            echo "Gatling folder found: ${gatlingFolder}"
+            script {
+                def gatlingFolder = sh(script: "ls target/gatling", returnStdout: true).trim()
+                echo "Gatling folder found: ${gatlingFolder}"
+            }
         }
     }
   }
