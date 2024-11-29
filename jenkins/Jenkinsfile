@@ -13,8 +13,10 @@ pipeline {
     stage('Saving folder') {
         steps {
             script {
-                def gatlingFolder = sh(script: "ls target/gatling", returnStdout: true).trim()
+                def gatlingFolder = sh(script: "cat target/gatling/lastRun.txt", returnStdout: true).trim()
                 echo "Gatling folder found: ${gatlingFolder}"
+
+                archiveArtifacts artifacts: "target/gatling/${gatlingFolder}/**"
             }
         }
     }
