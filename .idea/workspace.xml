@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d67d8da-e74b-4a1b-95c0-b27e8033fc83" name="Changes" comment="fix(gatling): modifying test duration">
-      <change beforePath="$PROJECT_DIR$/jenkins/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/jenkins/Jenkinsfile" afterDir="false" />
-    </list>
+    <list default="true" id="5d67d8da-e74b-4a1b-95c0-b27e8033fc83" name="Changes" comment="fix(gatling): modifying test duration" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -168,7 +166,7 @@
       <workItem from="1728030534740" duration="773000" />
       <workItem from="1728557844893" duration="100000" />
       <workItem from="1729580770880" duration="67485000" />
-      <workItem from="1732888088462" duration="1939000" />
+      <workItem from="1732888088462" duration="2785000" />
     </task>
     <task id="LOCAL-00001" summary="fix(gitignore): stop target folder to being pushed">
       <option name="closed" value="true" />
