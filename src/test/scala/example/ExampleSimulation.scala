@@ -21,6 +21,6 @@ class ExampleSimulation extends Simulation {
   val bitcoin: ScenarioBuilder = scenario("Bitcoin price check").exec(checkPrice)
 
   setUp(
-    bitcoin.inject(rampUsers(10).during(2.minutes))
+    bitcoin.inject(constantConcurrentUsers(5).during(20.seconds))
   ).protocols(httpProtocol)
 }

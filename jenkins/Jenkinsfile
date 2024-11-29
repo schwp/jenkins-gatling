@@ -10,5 +10,9 @@ pipeline {
         sh 'mvn gatling:test'
       }
     }
+    stage('Saving folder') {
+        def gatlingFolder = sh(script: "ls target/gatling", returnStdout: true).trim()
+        echo "Gatling folder found: ${gatlingFolder}"
+    }
   }
 }
