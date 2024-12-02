@@ -4,7 +4,7 @@ node {
     docker.image('maven:3.8.6-openjdk-11').inside {
         try {
             stage('Get PWD') {
-                echo "Running in workspace: $(pwd)"
+                echo 'Running in workspace: $(pwd)'
             }
             stage('Run Gatling Test') {
                 sh 'mvn gatling:test'
