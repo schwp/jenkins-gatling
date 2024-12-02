@@ -1,11 +1,14 @@
 #!/usr/bin/env groovy
 
 node {
+    stage('Clone repository') {
+        checkout scm
+    }
     docker.image('maven:3.8.6-openjdk-11').inside {
         try {
-            stage('Clone Repository') {
-                git branch: 'main', url: 'https://github.com/schwp/jenkins-gatling'
-            }
+            /*stage('Clone Repository') {
+            //    git branch: 'main', url: 'https://github.com/schwp/jenkins-gatling'
+            }*/
             stage('Get PWD') {
                 sh 'echo \"Running in workspace: $(pwd)\"'
             }
