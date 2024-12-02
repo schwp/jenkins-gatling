@@ -1,0 +1,25 @@
+#!/usr/bin/env groovy
+
+node {
+    docker.image('maven:3.8.6-openjdk-11').inside {
+        try {
+            stage('Run Gatling Test') {
+                sh 'mvn gatling:test'
+            }
+            stage('Saving reports') {
+                script {
+                    def gatlingFolder = sh(script: "cat target/gatling/lastRun.txt", returnStdout: true).trim()
+                    echo "Gatling folder found: ${gatlingFolder}"
+
+                    zip zipFile: "${gatlingFolder}.zip", archive: true, dir: "target/gatling/${gatlingFolder}"
+                    //archiveArtifacts artifacts: "target/gatling/${gatlingFolder}/**", onlyIfSuccessful: true
+                }
+            }
+        } catch (Exception e) {
+            echo "Pipeline failed: ${e.getMessage()}"
+            currentBuild.result = 'FAILURE'
+        } finally {
+            echo "Pipeline completed."
+        }
+    }
+}
