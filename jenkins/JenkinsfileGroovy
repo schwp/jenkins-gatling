@@ -4,7 +4,7 @@ node {
     stage('Clone repository') {
         checkout scm
     }
-    docker.image('maven:3.9.9-eclipse-temurin-11\n').inside {
+    docker.image('maven:3.9.9-eclipse-temurin-11').inside {
         try {
             /*stage('Clone Repository') {
             //    git branch: 'main', url: 'https://github.com/schwp/jenkins-gatling'
