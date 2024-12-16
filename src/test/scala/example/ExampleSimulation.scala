@@ -9,18 +9,21 @@ import scala.concurrent.duration.DurationInt
 
 class ExampleSimulation extends Simulation {
 
-  val checkPrice: ChainBuilder = exec(
-    http("Get Price")
-      .get("/v1/bpi/currentprice.json")
+  val addObj: ChainBuilder = exec(
+    http("Add Object")
+      .post("/objects")
+      .body(
+        RawFileBody("file.json")
+      ).asJson
       .check(status.is(200))
   )
 
   val httpProtocol: HttpProtocolBuilder =
-    http.baseUrl("https://api.coindesk.com")
+    http.baseUrl("https://api.restful-api.dev")
 
-  val bitcoin: ScenarioBuilder = scenario("Bitcoin price check").exec(checkPrice)
+  val obj: ScenarioBuilder = scenario("ADD OBJECT").exec(addObj)
 
   setUp(
-    bitcoin.inject(constantConcurrentUsers(5).during(20.seconds))
+    obj.inject(constantConcurrentUsers(5).during(20.seconds))
   ).protocols(httpProtocol)
 }
